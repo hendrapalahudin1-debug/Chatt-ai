@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>AI Chat Bot</title>
+<style>
+body { background:#111; color:white; font-family:Arial; }
+#chat { height:300px; overflow:auto; border:1px solid #444; padding:10px; }
+input { width:80%; padding:8px; }
+button { padding:8px; }
+.bot { color:lime; }
+.user { color:cyan; }
+</style>
+</head>
+<body>
+
+<h2>🤖 AI Chat Bot</h2>
+<div id="chat"></div>
+<input id="input" placeholder="Ketik pesan...">
+<button onclick="send()">Kirim</button>
+
+<script>
+let chat = document.getElementById("chat");
+
+function addMessage(text, cls) {
+  let div = document.createElement("div");
+  div.className = cls;
+  div.innerText = text;
+  chat.appendChild(div);
+  chat.scrollTop = chat.scrollHeight;
+}
+
+function botReply(msg) {
+  msg = msg.toLowerCase();
+
+  if (msg.includes("halo")) return "Halo 👋";
+  if (msg.includes("nama")) return "Aku AI Bot 😎";
+  if (msg.includes("hai")) return "apa komtol"
+  if (msg.includes("nomer wa")) return "no togel adanya"
+  if (msg.includes("kamu siapa")) return "Aku chatbot buatan kamu 🤖";
+  return "ngomong apa kontol";
+}
+
+function send() {
+  let input = document.getElementById("input");
+  let text = input.value;
+  if (!text) return;
+
+  addMessage("Kamu: " + text, "user");
+  addMessage("Bot: " + botReply(text), "bot");
+
+  input.value = "";
+}
+</script>
+
+</body>
+</html>
